@@ -1,0 +1,37 @@
+{% extends "base/base.html" %}
+
+{% block title %}Product Detail{% endblock title %}
+
+{% block content %}
+<h1> {{product.ProductName}} </h1>
+
+
+<table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Company</th>
+        <th scope="col">Supplier</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">{{ product.pk }}</th>
+        <td>{{ product.ProductName }}</td>
+        <td>{{product.SupplierId.CompanyName}}</td>
+        <td>{{ product.SupplierId.ContractName }}</td>
+        <td>{{ product.UnitPrice }}</td>
+      </tr>
+      <tr>
+        <td>
+          <a href="{% url 'product-update' product.pk %}" class="btn btn-success" role="button" title="Modify" ><i class="fas fa-edit"></i></i></a>
+          <a href="{% url 'product-delete' product.pk %}" class="btn btn-danger" role="button"  title="Delete"><i class="far fa-trash-alt"></i></a>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  {% endblock %}
